@@ -1,1 +1,904 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakSec Advisory - Cyber Security Consultation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0f;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            position: relative;
+            background-color: #0a0a0f;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0,168,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: pulse 4s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section.alt-bg {
+            background-color: #0d1117;
+        }
+
+        .section.guarantee {
+            text-align: center;
+        }
+
+        .section.final-cta {
+            background: linear-gradient(135deg, #0a0a0f 0%, rgba(0,168,255,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section.final-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,168,255,0.3) 0%, transparent 50%);
+            border-radius: 50%;
+            filter: blur(50px);
+            z-index: 1;
+        }
+
+        .section.final-cta > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            backdrop-filter: none;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(10,10,15,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .navbar .logo svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #00a8ff;
+        }
+
+        .navbar .cta-button {
+            background: linear-gradient(135deg, #00a8ff 0%, #0077cc 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(0,168,255,0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .navbar .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hero {
+            text-align: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.1);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subheadline {
+            font-size: 20px;
+            color: #8b949e;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00a8ff 0%, #0077cc 100%);
+            color: #ffffff;
+            padding: 18px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 0 30px rgba(0,168,255,0.6);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero .guarantees {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 60px;
+        }
+
+        .hero .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .hero .stat {
+            text-align: center;
+        }
+
+        .hero .stat .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00a8ff;
+            margin-bottom: 10px;
+        }
+
+        .hero .stat .label {
+            font-size: 16px;
+            color: #8b949e;
+        }
+
+        .problem .label {
+            font-size: 14px;
+            color: #00a8ff;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .problem h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .problem .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .problem .card .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .problem .card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .problem .card p {
+            color: #8b949e;
+        }
+
+        .problem .accent-text {
+            text-align: center;
+            font-size: 24px;
+            color: #00a8ff;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+
+        .why-us .label {
+            font-size: 14px;
+            color: #00a8ff;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .why-us h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .why-us p {
+            font-size: 18px;
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+
+        .why-us .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-us .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .why-us .card .icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .why-us .card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .why-us .card p {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .why-us .highlight {
+            border: 2px solid #00a8ff;
+            background: rgba(0,168,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #00a8ff;
+            margin-top: 40px;
+        }
+
+        .what-you-get .label {
+            font-size: 14px;
+            color: #00a8ff;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .what-you-get h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .what-you-get .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .what-you-get .list {
+            list-style: none;
+        }
+
+        .what-you-get .list li {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #8b949e;
+        }
+
+        .what-you-get .list li::before {
+            content: counter(list-item) '. ';
+            color: #00a8ff;
+            font-weight: 600;
+        }
+
+        .what-you-get .pricing-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .what-you-get .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .what-you-get .pricing-card .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #00a8ff;
+            margin-bottom: 10px;
+        }
+
+        .what-you-get .pricing-card .subtext {
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+
+        .what-you-get .pricing-card .includes {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .what-you-get .pricing-card .includes li {
+            margin-bottom: 10px;
+            color: #8b949e;
+        }
+
+        .what-you-get .pricing-card .includes li::before {
+            content: '✓';
+            color: #00ffd5;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .what-you-get .pricing-card .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00a8ff 0%, #0077cc 100%);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(0,168,255,0.4);
+            margin-bottom: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .what-you-get .pricing-card .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .what-you-get .pricing-card .promise {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .guarantee .shield {
+            font-size: 64px;
+            color: #00a8ff;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0,168,255,0.5));
+        }
+
+        .guarantee h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .guarantee p {
+            font-size: 18px;
+            color: #8b949e;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee .trust-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guarantee .trust-row div {
+            color: #8b949e;
+        }
+
+        .guarantee .trust-row div::before {
+            content: '✓';
+            color: #00ffd5;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .final-cta {
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .final-cta .subtext {
+            font-size: 18px;
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+
+        .final-cta .cta-button {
+            display: inline-block;
+            background: #25d366;
+            color: #ffffff;
+            padding: 18px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(37,211,102,0.4);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .final-cta .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .final-cta .cta-button::before {
+            content: '💬 ';
+        }
+
+        .final-cta .bottom-text {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .footer {
+            background-color: #0d1117;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .footer .tagline {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .footer .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer .links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer .links a:hover {
+            color: #00a8ff;
+        }
+
+        .footer .cta-button {
+            background: linear-gradient(135deg, #00a8ff 0%, #0077cc 100%);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(0,168,255,0.4);
+        }
+
+        .footer .bottom {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10,10,15,0.95);
+                backdrop-filter: blur(10px);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subheadline {
+                font-size: 16px;
+            }
+
+            .hero .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .what-you-get .content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+                PakSec Advisory
+            </div>
+            <ul class="nav-links">
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#why-us">Experience</a></li>
+                <li><a href="#what-you-get">What You Get</a></li>
+                <li><a href="#guarantee">Guarantee</a></li>
+                <li><a href="https://wa.me/92XXXXXXXXXX" target="_blank" rel="noopener" class="cta-button">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero hero-bg">
+        <div class="section">
+            <div class="badge">🇵🇰 Pakistan's Premier Cyber Security Consultation</div>
+            <h1>Lost in Cyber Security? Get a Clear Path — In One Call.</h1>
+            <p class="subheadline">Stop wasting months on the wrong courses, certifications, and advice. One consultation with a real-world practitioner gives you a personalised roadmap built around your goals and background.</p>
+            <a href="https://wa.me/92XXXXXXXXXX" target="_blank" rel="noopener" class="cta-button">Book Your Consultation on WhatsApp →</a>
+            <div class="guarantees">✓ We reply within 24 hours  ✓ 100% Money-Back Guarantee</div>
+            <div class="stats" id="stats">
+                <div class="stat">
+                    <div class="number" data-target="5">0</div>
+                    <div class="label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="3">0</div>
+                    <div class="label">Domains Covered</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="100">0</div>
+                    <div class="label">Money-Back</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="24">0</div>
+                    <div class="label">24hr Response</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="section">
+            <div class="label">The Problem</div>
+            <h2>Why Most People Never Break Into Cyber Security</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>Too Much Noise</h3>
+                    <p>YouTube, Reddit, bootcamps, Discord. Everyone says something different. No clear starting point.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⏳</div>
+                    <h3>Months Wasted</h3>
+                    <p>Wrong courses. Wrong certifications. Months of effort with no real direction or job at the end.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🚫</div>
+                    <h3>No Real Guidance</h3>
+                    <p>Generic advice from people who've never worked in the field. Theory without real-world context.</p>
+                </div>
+            </div>
+            <div class="accent-text">There is a better way.</div>
+        </div>
+    </section>
+
+    <section class="why-us" id="why-us">
+        <div class="section">
+            <div class="label">Why PakSec Advisory</div>
+            <h2>Real-World Experience. Not Just Theory.</h2>
+            <p>Our advisors have 5+ years of hands-on experience working with some of the largest organisations in the world — not just studying for certifications.</p>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🌐</div>
+                    <h3>Network Security</h3>
+                    <p>Enterprise network architecture, firewalls, VPNs, and threat detection from real client environments.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌍</div>
+                    <h3>Web Application Security</h3>
+                    <p>Penetration testing, OWASP Top 10, and vulnerability assessments on live production systems.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏗️</div>
+                    <h3>Infrastructure Security</h3>
+                    <p>Securing critical IT infrastructure for multinational organisations across multiple industries.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📋</div>
+                    <h3>GRC — Governance, Risk & Compliance</h3>
+                    <p>ISO 27001, NIST, risk assessments, and compliance audits from real enterprise engagements.</p>
+                </div>
+            </div>
+            <div class="highlight">We don't teach from slides. We advise from experience.</div>
+        </div>
+    </section>
+
+    <section class="what-you-get" id="what-you-get">
+        <div class="section">
+            <div class="label">The Consultation</div>
+            <h2>What Happens In Your Call</h2>
+            <div class="content">
+                <ol class="list">
+                    <li>Skill & background assessment — we understand exactly where you are today</li>
+                    <li>Personalised learning roadmap — a step-by-step path tailored to your goals</li>
+                    <li>Certification guidance — which certs to target and in which order</li>
+                    <li>Domain selection advice — network, web, GRC, or infrastructure — we help you choose</li>
+                    <li>Resource recommendations — what to study, what to skip, what actually gets you hired</li>
+                    <li>24-hour WhatsApp follow-up — send us your questions after the call</li>
+                </ol>
+                <div class="pricing-card">
+                    <h3>1-on-1 Consultation</h3>
+                    <div class="price">Rs. 5,000</div>
+                    <div class="subtext">One-time investment</div>
+                    <ul class="includes">
+                        <li>Personalised assessment</li>
+                        <li>Custom roadmap</li>
+                        <li>Certification guidance</li>
+                        <li>Domain selection</li>
+                        <li>Resource recommendations</li>
+                        <li>24-hour follow-up</li>
+                    </ul>
+                    <a href="https://wa.me/92XXXXXXXXXX" target="_blank" rel="noopener" class="cta-button">Book on WhatsApp →</a>
+                    <div class="promise">100% refunded if you don't get value. That's our promise.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee alt-bg" id="guarantee">
+        <div class="section guarantee">
+            <div class="shield">🛡️</div>
+            <h2>Zero Risk. Guaranteed.</h2>
+            <p>If you complete the consultation and don't walk away with a clear, actionable path forward — we will refund 100% of your payment. No questions asked. No conditions. That is our promise.</p>
+            <div class="trust-row">
+                <div>Full refund if not satisfied</div>
+                <div>No contracts or hidden fees</div>
+                <div>Real practitioners, not coaches</div>
+                <div>Reply guaranteed within 24 hours</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="section">
+            <h2>Ready to Stop Guessing and Start Moving?</h2>
+            <p class="subtext">Book your consultation today. One call can save you 6 months of wasted effort.</p>
+            <a href="https://wa.me/92XXXXXXXXXX" target="_blank" rel="noopener" class="cta-button">Chat With Us on WhatsApp →</a>
+            <div class="bottom-text">We respond within 24 hours · Pakistani practitioners · Real-world advice</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <div class="logo">PakSec Advisory</div>
+                <div class="tagline">Clearing the path into cyber security.</div>
+            </div>
+            <div class="links">
+                <a href="#why-us">Why Us</a>
+                <a href="#why-us">Experience</a>
+                <a href="#what-you-get">What You Get</a>
+                <a href="#guarantee">Guarantee</a>
+            </div>
+            <a href="https://wa.me/92XXXXXXXXXX" target="_blank" rel="noopener" class="cta-button">Book on WhatsApp</a>
+        </div>
+        <div class="bottom">© 2026 PakSec Advisory. All rights reserved. | Part of the PakSec Nation ecosystem.</div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Count-up animation
+        const stats = document.querySelectorAll('.stat .number');
+        const statsSection = document.getElementById('stats');
+
+        const countUp = (element) => {
+            const target = +element.dataset.target;
+            const increment = target / 100;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.innerText = target;
+                    clearInterval(timer);
+                } else {
+                    element.innerText = Math.floor(current);
+                }
+            }, 30);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    stats.forEach(stat => countUp(stat));
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(statsSection);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
